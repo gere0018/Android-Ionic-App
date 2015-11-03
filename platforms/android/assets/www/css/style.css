@@ -1,0 +1,11 @@
+/* Empty. Add your own CSS if you like */
+.inputForm{
+    margin-top: 50px;
+    border-color: white;
+}
+.deleteBtn{
+        margin-top: 1.1rem;
+}
+.todoItem{
+    border-color: white;
+}
