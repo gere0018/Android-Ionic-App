@@ -1,0 +1,25 @@
+<ion-view view-title={{listTitle}}>
+  <ion-content>
+      <!-- *********   adding the input form that will be used to enter input in all lists  ********   -->
+         <form ng-controller = 'AddCtrl'  class=" inputForm item item-input-inset"
+               name="ToDoForm" ng-submit="addItem()">
+             <label class="item-input-wrapper">
+              <input type="text" ng-model= "action" placeholder="Add an action">
+            </label>
+            <button class="button button-small button-positive">
+              Add
+            </button>
+        </form>
+<!--      ******************************************************************************   -->
+    <ion-list >
+        <ion-item ng-repeat="todo in list" class="item item-button-right" >
+             <ion-checkbox class="todoItem" ng-model="todo.isChecked" ng-click= "taskComplete($index)">
+             {{todo.title}}
+            </ion-checkbox>
+            <button class="button button-clear deleteBtn button-assertive" ng-click= "removeItem($index)">
+              <i class="ion-minus-circled"></i>
+            </button>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

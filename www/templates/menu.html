@@ -9,17 +9,7 @@
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
-<!-- *********   adding the input form that will be used to enter input in all lists  ********   -->
-         <form ng-controller = 'AddCtrl'  class=" inputForm item item-input-inset"
-               name="ToDoForm" ng-submit="addItem()">
-             <label class="item-input-wrapper">
-              <input type="text" ng-model= "action" placeholder="Add an action">
-            </label>
-            <button class="button button-small button-positive">
-              Add
-            </button>
-        </form>
-<!--      ******************************************************************************   -->
+
         <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 

@@ -24,6 +24,20 @@ angular.module('Android-Ionic-App.services', [])
             }
           return i;
       },
+      getListTitle: function(i){
+          var listTitle = "";
+                if(i == 0){
+                    listTitle = "Homework";
+                }
+                if(i == 1){
+                    listTitle = "Work";
+                }
+                if(i == 2){
+                    listTitle = "Reminders";
+                }
+          return listTitle;
+
+      },
       addItem: function(whichList, item){
         whichList.push(item);
       },

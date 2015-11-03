@@ -6,7 +6,6 @@ angular.module('Android-Ionic-App.controllers', [])
     Data.lists[2] = LocalStorage.getLocalStorageValues("3")  || [];
     Data.settings = LocalStorage.getLocalStorageValues("settings1") || Data.settings;
 
-
 })
 .controller('AddCtrl', function($scope, Data, $location,LocalStorage) {
     $scope.action = "";
@@ -23,10 +22,11 @@ angular.module('Android-Ionic-App.controllers', [])
 
 })
 
-.controller('ListsCtrl', function($scope, Data, LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
-    $scope.homework =  Data.lists[0];
-    $scope.work=  Data.lists[1];
-    $scope.reminders= Data.lists[2];
+.controller('ListsCtrl', function($scope, Data,  LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
+     var i = Data.identifyList();
+    $scope.list =  Data.lists[i];
+    $scope.listTitle = Data.getListTitle(i);
+    console.log(i);
 
     //save the value of the checkbox in local storage.
     $scope.taskComplete = function($index){
@@ -50,22 +50,11 @@ angular.module('Android-Ionic-App.controllers', [])
 
             //When list is fully complete send notification if allowed in settings
             if(listComplete == true){
-                i = Data.identifyList();
-                var listTitle = "";
-                if(i == 0){
-                    listTitle = "Homework";
-                }
-                if(i == 1){
-                    listTitle = "Work";
-                }
-                if(i == 2){
-                    listTitle = "Reminders";
-                }
                 //console.log("send notification to the user");
                 $cordovaLocalNotification.schedule({
                     id: 1,
                     title: 'List Complete',
-                    text: listTitle + " is complete.",
+                    text: $scope.listTitle + " is complete.",
                     data: {
                       customProperty: 'custom value'
                     }

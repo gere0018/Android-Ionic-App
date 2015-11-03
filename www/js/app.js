@@ -31,36 +31,7 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
-  .state('app.homework', {
-    url: '/homework',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/homework.html',
-          controller: 'ListsCtrl'
-      }
-    }
-  })
-
-  .state('app.work', {
-      url: '/work',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/work.html',
-          controller: 'ListsCtrl'
-        }
-      }
-    })
-    .state('app.reminders', {
-      url: '/reminders',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/reminders.html',
-          controller: 'ListsCtrl'
-        }
-      }
-    })
-      .state('app.settings', {
+   .state('app.settings', {
       url: '/settings',
       views: {
         'menuContent': {
@@ -68,10 +39,19 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
           controller: 'SettingsCtrl'
         }
       }
-    });
+    })
+  .state('app.list', {
+    url: '/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/list.html',
+          controller: 'ListsCtrl'
+      }
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/reminders');
+  $urlRouterProvider.otherwise('/app/homework');
 })
 .config(function (localStorageServiceProvider) {
   localStorageServiceProvider

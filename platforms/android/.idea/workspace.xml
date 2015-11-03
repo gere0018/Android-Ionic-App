@@ -949,7 +949,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$USER_HOME$/AndroidStudioProjects/GitHub/LoginExample" value="4332261996000" />
-        <entry key="$PROJECT_DIR$" value="5786248338000" />
+        <entry key="$PROJECT_DIR$" value="5786290790000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1420,7 +1420,7 @@
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
