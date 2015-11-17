@@ -1,6 +1,8 @@
 {
     "jscodehints.detectedExclusions": [
         "/Users/nehmat/Desktop/Android-Ionic-App/www/js/controllers.js",
-        "/Users/nehmat/Desktop/Android-Ionic-App/www/js/app.js"
+        "/Users/nehmat/Desktop/Android-Ionic-App/www/js/app.js",
+        "/Users/nehmat/Documents/MADD/Mad-9135/Android-Ionic-App/www/lib/ngCordova/dist/ng-cordova.min.js",
+        "/Users/nehmat/Documents/MADD/Mad-9135/Android-Ionic-App/www/dist/Android-Ionic-App.js"
     ]
 }

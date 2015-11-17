@@ -51,7 +51,7 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/reminders');
+  $urlRouterProvider.otherwise('/app/homework');
 })
 .config(function (localStorageServiceProvider) {
   localStorageServiceProvider

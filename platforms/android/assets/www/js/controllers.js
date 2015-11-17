@@ -6,7 +6,6 @@ angular.module('Android-Ionic-App.controllers', [])
     Data.lists[2] = LocalStorage.getLocalStorageValues("3")  || [];
     Data.settings = LocalStorage.getLocalStorageValues("settings1") || Data.settings;
 
-
 })
 .controller('AddCtrl', function($scope, Data, $location,LocalStorage) {
     $scope.action = "";
@@ -19,7 +18,7 @@ angular.module('Android-Ionic-App.controllers', [])
             LocalStorage.setLocalStorageValues(i, Data.lists[i]);
             $scope.action = "";
         }
-    }
+    };
 
 })
 
@@ -34,23 +33,23 @@ angular.module('Android-Ionic-App.controllers', [])
         var i = Data.identifyList();
         LocalStorage.setLocalStorageValues(i, Data.lists[i]);
         //make phone vibrate when task is completed if allowed in settings
-        if((Data.settings[0].checked == true) && (Data.lists[i][$index].isChecked == true) ){
+        if((Data.settings[0].checked === true) && (Data.lists[i][$index].isChecked === true) ){
            // console.log("phone vibrating");
             // Vibrate 100ms
             $cordovaVibration.vibrate(100);
         }
         //make phone vibrate when task is completed if allowed in settings
-        if(Data.settings[1].checked == true){
+        if(Data.settings[1].checked === true){
             var listComplete = true;
             for (var j= 0; j<Data.lists[i].length; j++ ){
-               if(Data.lists[i][j].isChecked != true){
+               if(Data.lists[i][j].isChecked !== true){
                    listComplete = false;
                    break;
                }
             }
 
             //When list is fully complete send notification if allowed in settings
-            if(listComplete == true){
+            if(listComplete === true){
                 //console.log("send notification to the user");
                 $cordovaLocalNotification.schedule({
                     id: 1,
@@ -63,14 +62,14 @@ angular.module('Android-Ionic-App.controllers', [])
             }
         }
 
-    }
+    };
 
     //delete items from list and local storage.
     $scope.removeItem = function($index){
          var i = Data.identifyList();
         Data.removeItem(Data.lists[i], $index );
         LocalStorage.setLocalStorageValues(i, Data.lists[i]);
-    }
+    };
 
 })
 
@@ -79,17 +78,17 @@ angular.module('Android-Ionic-App.controllers', [])
     $scope.settings = Data.settings;
 
     //When we change the toggle in the settings, save the new settings to local storage as well.
-    $scope.isChecked = function($index){
-        if($scope.settings[0].checked == true){
+    $scope.isChecked = function(){
+        if($scope.settings[0].checked === true){
 
         console.log("phone vibrating");
         }
-        if($scope.settings[1].checked == true){
+        if($scope.settings[1].checked === true){
             console.log("notification");
         }
          LocalStorage.setLocalStorageValues("settings", Data.settings);
 
-     }
+     };
 
 
 });

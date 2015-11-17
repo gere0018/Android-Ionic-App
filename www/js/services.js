@@ -26,13 +26,13 @@ angular.module('Android-Ionic-App.services', [])
       },
       getListTitle: function(i){
           var listTitle = "";
-                if(i == 0){
+                if(i === 0){
                     listTitle = "Homework";
                 }
-                if(i == 1){
+                if(i === 1){
                     listTitle = "Work";
                 }
-                if(i == 2){
+                if(i === 2){
                     listTitle = "Reminders";
                 }
           return listTitle;
@@ -45,7 +45,7 @@ angular.module('Android-Ionic-App.services', [])
         whichList.splice(index, 1);
       }
 
-  }
+  };
 
 
 })
@@ -57,7 +57,7 @@ angular.module('Android-Ionic-App.services', [])
       setLocalStorageValues: function(listsIndex, whichList){
           localStorageService.set(listsIndex + 1, whichList);
       }
-    }
+    };
 
 
 });
