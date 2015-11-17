@@ -61,7 +61,7 @@ public class SystemWebChromeClient extends WebChromeClient {
 
     // the video progress view
     private View mVideoProgressView;
-
+    
     private CordovaDialogsHelper dialogsHelper;
 
     private WebChromeClient.CustomViewCallback mCustomViewCallback;
@@ -181,7 +181,7 @@ public class SystemWebChromeClient extends WebChromeClient {
         super.onGeolocationPermissionsShowPrompt(origin, callback);
         callback.invoke(origin, true, false);
     }
-
+    
     // API level 7 is required for this, see if we could lower this using something else
     @Override
     public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback) {
@@ -201,9 +201,9 @@ public class SystemWebChromeClient extends WebChromeClient {
      */
     public View getVideoLoadingProgressView() {
 
-        if (mVideoProgressView == null) {
+        if (mVideoProgressView == null) {            
             // Create a new Loading view programmatically.
-
+            
             // create the linear layout
             LinearLayout layout = new LinearLayout(parentEngine.getView().getContext());
             layout.setOrientation(LinearLayout.VERTICAL);
@@ -214,12 +214,12 @@ public class SystemWebChromeClient extends WebChromeClient {
             ProgressBar bar = new ProgressBar(parentEngine.getView().getContext());
             LinearLayout.LayoutParams barLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             barLayoutParams.gravity = Gravity.CENTER;
-            bar.setLayoutParams(barLayoutParams);
+            bar.setLayoutParams(barLayoutParams);   
             layout.addView(bar);
-
+            
             mVideoProgressView = layout;
         }
-    return mVideoProgressView;
+    return mVideoProgressView; 
     }
 
     // <input type=file> support:
@@ -228,11 +228,11 @@ public class SystemWebChromeClient extends WebChromeClient {
     public void openFileChooser(ValueCallback<Uri> uploadMsg) {
         this.openFileChooser(uploadMsg, "*/*");
     }
-
+    
     public void openFileChooser( ValueCallback<Uri> uploadMsg, String acceptType ) {
         this.openFileChooser(uploadMsg, acceptType, null);
     }
-
+    
     public void openFileChooser(final ValueCallback<Uri> uploadMsg, String acceptType, String capture)
     {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

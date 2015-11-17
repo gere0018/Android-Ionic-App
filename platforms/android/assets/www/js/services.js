@@ -1,5 +1,5 @@
 angular.module('Android-Ionic-App.services', [])
-.factory('Data', function DataFactory($location) {
+.factory('Data', ['$location', function DataFactory($location) {
     var reminders = [];
     var homework = [];
     var work = [];
@@ -48,8 +48,8 @@ angular.module('Android-Ionic-App.services', [])
   };
 
 
-})
-.factory('LocalStorage', function LocalStorageFactory(localStorageService) {
+}])
+.factory('LocalStorage',['localStorageService', function LocalStorageFactory(localStorageService) {
      return {
       getLocalStorageValues: function(key){
           return localStorageService.get(key);
@@ -60,5 +60,5 @@ angular.module('Android-Ionic-App.services', [])
     };
 
 
-});
+}]);
 

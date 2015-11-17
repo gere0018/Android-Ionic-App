@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','Android-Ionic-App.services','LocalStorageModule','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,9 +20,9 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
       StatusBar.styleDefault();
     }
   });
-})
+}])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
@@ -52,8 +52,8 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/homework');
-})
-.config(function (localStorageServiceProvider) {
+}])
+.config(['localStorageServiceProvider', function (localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('gere0018-Android-Ionic-App');
-});
+}]);

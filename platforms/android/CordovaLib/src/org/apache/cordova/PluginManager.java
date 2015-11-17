@@ -219,9 +219,9 @@ public class PluginManager {
      * @param handler           The HttpAuthHandler used to set the WebView's response
      * @param host              The host requiring authentication
      * @param realm             The realm for which authentication is required
-     *
+     * 
      * @return                  Returns True if there is a plugin which will resolve this auth challenge, otherwise False
-     *
+     * 
      */
     public boolean onReceivedHttpAuthRequest(CordovaWebView view, ICordovaHttpAuthHandler handler, String host, String realm) {
         for (CordovaPlugin plugin : this.pluginMap.values()) {
@@ -231,7 +231,7 @@ public class PluginManager {
         }
         return false;
     }
-
+    
     /**
      * Called when he system received an SSL client certificate request.  Plugin can use
      * the supplied ClientCertRequest to process this certificate challenge.

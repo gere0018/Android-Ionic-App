@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','Android-Ionic-App.services','LocalStorageModule','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,9 +20,9 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
       StatusBar.styleDefault();
     }
   });
-})
+}])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
@@ -52,22 +52,22 @@ angular.module('Android-Ionic-App', ['ionic', 'Android-Ionic-App.controllers','A
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/homework');
-})
-.config(function (localStorageServiceProvider) {
+}])
+.config(['localStorageServiceProvider', function (localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('gere0018-Android-Ionic-App');
-});
+}]);
 
 angular.module('Android-Ionic-App.controllers', [])
 
-.controller('AppCtrl', function($scope, LocalStorage,Data ) {
+.controller('AppCtrl', ['$scope', 'Data', 'LocalStorage', function($scope,Data, LocalStorage ) {
     Data.lists[0] =  LocalStorage.getLocalStorageValues("1") || [];
     Data.lists[1] =  LocalStorage.getLocalStorageValues("2") || [];
     Data.lists[2] = LocalStorage.getLocalStorageValues("3")  || [];
     Data.settings = LocalStorage.getLocalStorageValues("settings1") || Data.settings;
 
-})
-.controller('AddCtrl', function($scope, Data, $location,LocalStorage) {
+}])
+.controller('AddCtrl', ['$scope', 'Data', '$location', 'LocalStorage',function($scope, Data, $location,LocalStorage) {
     $scope.action = "";
     //add item function using the Data service
     $scope.addItem = function (){
@@ -80,9 +80,9 @@ angular.module('Android-Ionic-App.controllers', [])
         }
     };
 
-})
+}])
 
-.controller('ListsCtrl', function($scope, Data,  LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
+.controller('ListsCtrl', ['$scope', 'Data', 'LocalStorage', '$cordovaVibration', '$cordovaLocalNotification', function($scope, Data,  LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
      var i = Data.identifyList();
     $scope.list =  Data.lists[i];
     $scope.listTitle = Data.getListTitle(i);
@@ -131,10 +131,10 @@ angular.module('Android-Ionic-App.controllers', [])
         LocalStorage.setLocalStorageValues(i, Data.lists[i]);
     };
 
-})
+}])
 
 
-.controller('SettingsCtrl', function($scope,Data,LocalStorage) {
+.controller('SettingsCtrl',['$scope', 'Data', 'LocalStorage', function($scope,Data,LocalStorage) {
     $scope.settings = Data.settings;
 
     //When we change the toggle in the settings, save the new settings to local storage as well.
@@ -151,12 +151,12 @@ angular.module('Android-Ionic-App.controllers', [])
      };
 
 
-});
+}]);
 
 
 
 angular.module('Android-Ionic-App.services', [])
-.factory('Data', function DataFactory($location) {
+.factory('Data', ['$location', function DataFactory($location) {
     var reminders = [];
     var homework = [];
     var work = [];
@@ -205,8 +205,8 @@ angular.module('Android-Ionic-App.services', [])
   };
 
 
-})
-.factory('LocalStorage', function LocalStorageFactory(localStorageService) {
+}])
+.factory('LocalStorage',['localStorageService', function LocalStorageFactory(localStorageService) {
      return {
       getLocalStorageValues: function(key){
           return localStorageService.get(key);
@@ -217,5 +217,5 @@ angular.module('Android-Ionic-App.services', [])
     };
 
 
-});
+}]);
 

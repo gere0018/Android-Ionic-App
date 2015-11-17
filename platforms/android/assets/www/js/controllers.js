@@ -1,13 +1,13 @@
 angular.module('Android-Ionic-App.controllers', [])
 
-.controller('AppCtrl', function($scope, LocalStorage,Data ) {
+.controller('AppCtrl', ['$scope', 'Data', 'LocalStorage', function($scope,Data, LocalStorage ) {
     Data.lists[0] =  LocalStorage.getLocalStorageValues("1") || [];
     Data.lists[1] =  LocalStorage.getLocalStorageValues("2") || [];
     Data.lists[2] = LocalStorage.getLocalStorageValues("3")  || [];
     Data.settings = LocalStorage.getLocalStorageValues("settings1") || Data.settings;
 
-})
-.controller('AddCtrl', function($scope, Data, $location,LocalStorage) {
+}])
+.controller('AddCtrl', ['$scope', 'Data', '$location', 'LocalStorage',function($scope, Data, $location,LocalStorage) {
     $scope.action = "";
     //add item function using the Data service
     $scope.addItem = function (){
@@ -20,9 +20,9 @@ angular.module('Android-Ionic-App.controllers', [])
         }
     };
 
-})
+}])
 
-.controller('ListsCtrl', function($scope, Data,  LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
+.controller('ListsCtrl', ['$scope', 'Data', 'LocalStorage', '$cordovaVibration', '$cordovaLocalNotification', function($scope, Data,  LocalStorage, $cordovaVibration, $cordovaLocalNotification) {
      var i = Data.identifyList();
     $scope.list =  Data.lists[i];
     $scope.listTitle = Data.getListTitle(i);
@@ -71,10 +71,10 @@ angular.module('Android-Ionic-App.controllers', [])
         LocalStorage.setLocalStorageValues(i, Data.lists[i]);
     };
 
-})
+}])
 
 
-.controller('SettingsCtrl', function($scope,Data,LocalStorage) {
+.controller('SettingsCtrl',['$scope', 'Data', 'LocalStorage', function($scope,Data,LocalStorage) {
     $scope.settings = Data.settings;
 
     //When we change the toggle in the settings, save the new settings to local storage as well.
@@ -91,6 +91,6 @@ angular.module('Android-Ionic-App.controllers', [])
      };
 
 
-});
+}]);
 
 

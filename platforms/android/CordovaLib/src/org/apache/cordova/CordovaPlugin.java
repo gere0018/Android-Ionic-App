@@ -75,7 +75,7 @@ public class CordovaPlugin {
     public String getServiceName() {
         return serviceName;
     }
-
+    
     /**
      * Executes the request.
      *
@@ -321,7 +321,7 @@ public class CordovaPlugin {
      */
     public void onReset() {
     }
-
+    
     /**
      * Called when the system received an HTTP authentication request. Plugin can use
      * the supplied HttpAuthHandler to process this auth challenge.
@@ -330,14 +330,14 @@ public class CordovaPlugin {
      * @param handler           The HttpAuthHandler used to set the WebView's response
      * @param host              The host requiring authentication
      * @param realm             The realm for which authentication is required
-     *
+     * 
      * @return                  Returns True if plugin will resolve this auth challenge, otherwise False
-     *
+     * 
      */
     public boolean onReceivedHttpAuthRequest(CordovaWebView view, ICordovaHttpAuthHandler handler, String host, String realm) {
         return false;
     }
-
+    
     /**
      * Called when he system received an SSL client certificate request.  Plugin can use
      * the supplied ClientCertRequest to process this certificate challenge.
